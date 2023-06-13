@@ -6,6 +6,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from contextlib import contextmanager
+from sqlalchemy.engine.base import Engine
+
 
 class SQLInterface:
 
@@ -22,7 +24,7 @@ class SQLInterface:
             pass
 
     def is_connected(self):
-        if self.engine:
+        if isinstance(self.engine, Engine):
             return True
         return False
 

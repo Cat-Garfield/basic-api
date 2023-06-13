@@ -10,25 +10,26 @@ class Settings(BaseSettings):
     server_host: str = ''
     server_port: int = 8000
 
-    app_debug: bool = False
+    app_debug: bool = True
     app_title: str = 'BasicAPI'
     app_description: str = '可快速开发的基础框架'
     app_version: str = '0.0.1'
     app_docs_url: str = '/docs'
     api_prefix = '/api'
+    api_cache = 'cache'
 
     allow_origins: List[str] = ['*']
 
-    redis_conn: str = ''
-    redis_user: str = ''
-    redis_password: str = ''
+    redis_host: str = '127.0.0.1'
+    redis_port: int = 6379
+    redis_password: str = '123456'
 
-    mysql_conn: str = ''
+    mysql_host: str = '127.0.0.1'
     mysql_port: int = 3306
-    mysql_user: str = ''
-    mysql_password: str = ''
+    mysql_user: str = 'root'
+    mysql_password: str = '123456'
 
-    sqlite_conn: str = ''
+    sqlite_path: str = 'cache'
 
     class Config:
         env_file = 'conf/dev.env'

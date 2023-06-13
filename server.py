@@ -38,4 +38,5 @@ async def middle(request: Request, call_next):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app='server:app', host=settings.server_host, port=settings.server_port, reload=True, log_config='conf/logging.conf')
+    uvicorn.run(app='server:app', host=settings.server_host, port=settings.server_port, reload=True,
+                log_config='conf/logging.conf')
