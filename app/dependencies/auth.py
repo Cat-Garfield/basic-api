@@ -10,6 +10,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
+from common.log_helper import log
 from common.db.db import DB
 from models.model_test import TUser
 
@@ -81,11 +82,18 @@ def get_current_user(token: str):
 
 
 def check_token_exist(token: str = Header(...)):
-    flag = DB.redis().get_value(token)
-    if flag:
-        DB.redis().set_expire(token, ACCESS_TOKEN_EXPIRE_MINUTES * 60)
-        return True
-    else:
+    try:
+        flag = DB.redis().get_value(token)
+        if flag:
+            DB.redis().set_expire(token, ACCESS_TOKEN_EXPIRE_MINUTES * 60)
+            return True
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="token is invalid",
+                headers={"WWW-Authenticate": "Bearer"})
+    except Exception as e:
+        log.error(f'{e}')
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="token is invalid",

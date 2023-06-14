@@ -4,6 +4,8 @@
 # @Author  : wade
 from fastapi import status
 from fastapi.responses import JSONResponse
+from common.log_helper import log
+
 
 __all__ = ['resp_succ', 'resp_fail']
 
@@ -23,4 +25,5 @@ def resp_fail(data='', msg='') -> JSONResponse:
         'msg': msg,
         'data': data
     }
+    log.error(f'{msg}')
     return JSONResponse(content=ret)

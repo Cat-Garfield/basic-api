@@ -13,6 +13,8 @@ from common.db.db import DB
 from schemas.user import UserForm
 from models.model_test import TUser
 
+from common.log_helper import log
+
 router = APIRouter(prefix='/user')
 
 

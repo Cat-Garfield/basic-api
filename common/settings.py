@@ -10,13 +10,15 @@ class Settings(BaseSettings):
     server_host: str = ''
     server_port: int = 8000
 
-    app_debug: bool = True
+    app_debug: bool = False
     app_title: str = 'BasicAPI'
     app_description: str = '可快速开发的基础框架'
     app_version: str = '0.0.1'
     app_docs_url: str = '/docs'
     api_prefix = '/api'
     api_cache = 'cache'
+
+    log_conf = 'conf/logging.conf'
 
     allow_origins: List[str] = ['*']
 
