@@ -9,6 +9,11 @@ import threading
 from common.settings import settings
 
 def singleton(cls):
+    """
+    单例模式
+    :param cls:
+    :return:
+    """
     cls.__new_original__ = cls.__new__
 
     @functools.wraps(cls.__new__)

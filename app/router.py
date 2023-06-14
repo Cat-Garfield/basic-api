@@ -14,8 +14,7 @@ from app.api.core.i_user import router as user_router
 
 router = APIRouter()
 
+
 router.include_router(user_router, prefix='/core', tags=['鉴权'])
-
-
 router.include_router(home_router, prefix='/home', tags=['首页'], dependencies=[Depends(check_token_exist)])
 router.include_router(file_router, prefix='/common', tags=['公共接口'], dependencies=[Depends(check_token_exist)])

@@ -10,6 +10,9 @@ from sqlalchemy.ext.declarative import declared_attr
 
 
 class ModelBase(object):
+    """
+    可将数据查询返回的object转换为字典，可用fastapi.encoders.jsonable_encoder方法代替
+    """
 
     @declared_attr
     def __tablename__(cls):

@@ -9,6 +9,9 @@ from common.log_helper import log
 
 __all__ = ['resp_succ', 'resp_fail']
 
+"""
+定义接口返回方法，统一接口返回的格式
+"""
 
 def resp_succ(data='', msg='') -> JSONResponse:
     ret = {

@@ -15,6 +15,11 @@ router = APIRouter()
 
 @router.get('home/home_info', summary='首页信息')
 def get_home_page_info(token: str = Header()):
+    """
+    该接口主要用于测试
+    :param token:
+    :return:
+    """
     try:
         user_account = get_current_user(token)
         return resp_succ(data=user_account)

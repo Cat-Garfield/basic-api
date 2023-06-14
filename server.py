@@ -11,14 +11,19 @@ import uvicorn
 from common.settings import settings
 from app.router import router
 
+# 程序主体
 app = FastAPI(debug=settings.app_debug,
               title=settings.app_title,
               description=settings.app_description,
               version=settings.app_version,
               docs_url=settings.app_docs_url)
 
+
+# 添加路由
 app.include_router(router, prefix=settings.api_prefix)
 
+
+# 添加跨域控制的中间件
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allow_origins,
@@ -28,6 +33,7 @@ app.add_middleware(
 )
 
 
+# 添加返回接口执行时间的中间件
 @app.middleware("http")
 async def middle(request: Request, call_next):
     start_time = time.time()
@@ -38,5 +44,8 @@ async def middle(request: Request, call_next):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app='server:app',  host=settings.server_host, port=settings.server_port, reload=True,
+    uvicorn.run(app='server:app',
+                host=settings.server_host,
+                port=settings.server_port,
+                reload=True,
                 log_config=settings.log_conf)

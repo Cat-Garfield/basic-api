@@ -14,8 +14,14 @@ from common.settings import settings
 router = APIRouter(prefix='/file')
 
 
-@router.get('/file/{file_type}/{file_name}', summary='文件预览')
+@router.get('/file/{file_type}/{file_name}', summary='文件预览或下载')
 def file_preview(file_type: str, file_name: str):
+    """
+    文件上传预览功能
+    :param file_type: 文件类型（可能为富文本图片，模板文件，其他文件）
+    :param file_name:
+    :return:
+    """
     try:
         full_file_path = os.path.join(settings.api_cache, file_type, file_name)
         if os.path.exists(full_file_path):
@@ -28,6 +34,12 @@ def file_preview(file_type: str, file_name: str):
 
 @router.post('/file/upload', summary='文件上传')
 def file_upload(file_type: str, file: UploadFile = File(...)):
+    """
+    文件上传接口
+    :param file_type: 文件类型，cache目录创建同名文件夹，存放对应类型的文件
+    :param file: 上传的文件
+    :return:
+    """
     try:
         file_dir = os.path.join(settings.api_cache, file_type)
         if not os.path.exists(file_dir):

@@ -14,6 +14,9 @@ from common.settings import settings
 
 
 class DBSession:
+    """
+    数据库连接汇总类
+    """
 
     def __init__(self):
         self.__db_dict = {}

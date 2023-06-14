@@ -5,6 +5,10 @@
 import os
 from common.settings import settings
 
+"""
+导出指定数据库的所有模型类
+"""
+
 def export_all_tables_from_sqlite():
     cmd = """
             sqlacodegen sqlite:///{} > ../models/{}.py

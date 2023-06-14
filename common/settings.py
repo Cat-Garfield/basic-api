@@ -7,6 +7,9 @@ from pydantic import BaseSettings
 from typing import List
 
 class Settings(BaseSettings):
+    """
+    配置文件
+    """
     server_host: str = ''
     server_port: int = 8000
 
