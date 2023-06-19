@@ -64,8 +64,8 @@ mysql
 > 修改本地用户密码  
 > ```ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';```  
 > 添加远程登录用户  
-> ```CREATE USER 'test'@'%' IDENTIFIED WITH mysql_native_password BY '123456!';```  
-> ```GRANT ALL PRIVILEGES ON *.* TO 'test'@'%';```
+> ```CREATE USER 'wade'@'%' IDENTIFIED WITH mysql_native_password BY 'wade!';```  
+> ```GRANT ALL PRIVILEGES ON *.* TO 'wade'@'%';```
 
 * #### 安装Redis
 1. 创建如下目录  
