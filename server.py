@@ -33,9 +33,15 @@ app.add_middleware(
 )
 
 
-# 添加返回接口执行时间的中间件
+
 @app.middleware("http")
 async def middle(request: Request, call_next):
+    """
+    返回接口执行时间的中间件
+    :param request:
+    :param call_next:
+    :return:
+    """
     start_time = time.time()
     response = await call_next(request)
     m = time.time() - start_time
